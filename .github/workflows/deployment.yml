@@ -1,0 +1,19 @@
+name: deployment workflow
+on: push
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: get code
+        uses: actions/checkout@v3
+      - name: install dependencies
+        run: npm ci
+      - name: lint
+        run: nmp run lint
+      - name: test
+        run: npm run test
+      - name: build
+        run: npm run build
+      - name: deploy code
+        run: echo "Deploying ..."
+    
